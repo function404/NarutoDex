@@ -35,6 +35,7 @@ export function VillagesListScreen() {
          <TextInput
             style={styles.searchBar}
             placeholder='Buscar vila...'
+            placeholderTextColor={'#f4f4f5'}
             value={searchQuery}
             onChangeText={setSearchQuery}
          />
@@ -65,15 +66,16 @@ const styles = StyleSheet.create({
       padding: 12,
       paddingHorizontal: 12,
       paddingTop: 12,
-      backgroundColor: '#f4f4f5',
+      backgroundColor: '#222',
    },
    searchBar: {
       height: 40,
-      borderColor: '#ccc',
+      borderColor: '#555',
       borderWidth: 1,
       borderRadius: 8,
       paddingHorizontal: 10,
       marginBottom: 10,
-      backgroundColor: '#fff',
+      backgroundColor: '#333',
+      color: '#f4f4f5',
    },
 })

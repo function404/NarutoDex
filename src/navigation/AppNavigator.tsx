@@ -1,9 +1,10 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { MainTabNavigator } from './MainTabNavigator'
 import { CharacterDetailScreen } from '@/features/screens/CharacterDetailScreen'
 import { VillageDetailScreen } from '@/features/screens/VillageDetailScreen'
+
+import { MainTabNavigator } from '@/navigation/MainTabNavigator'
 
 export type RootStackParamList = {
    MainTabs: undefined
@@ -19,7 +20,7 @@ export function AppNavigator() {
          initialRouteName='MainTabs'
          screenOptions={{
             headerStyle: { backgroundColor: '#f59e0b' },
-            headerTintColor: '#fff',
+            headerTintColor: '#333',
             headerTitleStyle: { fontWeight: 'bold' },
             contentStyle: { backgroundColor: '#f4f4f5' },
          }}

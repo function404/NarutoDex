@@ -16,12 +16,16 @@ interface Props {
 
 export function VillageCard({ village, onPress }: Props) {
    return (
-      <TouchableOpacity style={styles.card} onPress={onPress}>
-         <Image 
-            source={{ uri: village.symbol }} 
-            style={styles.image} 
-            resizeMode='contain'
-         />
+      <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.8}>
+         <View
+            style={styles.imageContainer}
+         >
+            <Image 
+               source={{ uri: village.symbol }} 
+               style={styles.image} 
+               resizeMode='contain'
+            />
+         </View>
          <View style={styles.info}>
             <Text style={styles.name}>{village.name}</Text>
             <Text style={styles.count}>{village.characters.length} ninjas</Text>
@@ -34,16 +38,19 @@ const styles = StyleSheet.create({
    card: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#fff',
+      backgroundColor: '#333',
       marginVertical: 6,
       marginHorizontal: 4,
       borderRadius: 12,
       overflow: 'hidden',
       elevation: 3,
-      shadowColor: '#000',
+      shadowColor: '#f59e0b',
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.22,
       shadowRadius: 2.22,
+   },
+   imageContainer: {
+      backgroundColor: '#444',
    },
    image: { 
       width: 60, 
@@ -57,9 +64,9 @@ const styles = StyleSheet.create({
    name: {
       fontSize: 16,
       fontWeight: 'bold',
-      color: '#333',
+      color: '#f4f4f5',
    },
    count: {
-      color: '#777',
+      color: '#999',
    },
 })

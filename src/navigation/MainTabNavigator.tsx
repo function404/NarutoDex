@@ -19,9 +19,9 @@ export function MainTabNavigator() {
          screenOptions={{
             headerShown: false,
             tabBarActiveTintColor: '#f59e0b',
-            tabBarInactiveTintColor: '#555',
+            tabBarInactiveTintColor: '#f4f4f5',
             tabBarStyle: {
-               backgroundColor: '#fff',
+               backgroundColor: '#333',
             },
             tabBarLabelStyle: {
                fontWeight: 'bold',

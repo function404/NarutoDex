@@ -29,13 +29,23 @@ export function CharactersListScreen() {
       )
    }, [data, searchQuery])
 
-   if (isLoading) return <ActivityIndicator size='large' style={styles.loader} />
+   if (isLoading) return (
+      <ActivityIndicator
+         size='large'
+         color='#f59e0b'
+         style={{
+            flex: 1,
+            backgroundColor: '#222'
+         }}
+      />
+   )
 
    return (
       <View style={styles.container}>
          <TextInput
             style={styles.searchBar}
             placeholder='Buscar personagem...'
+            placeholderTextColor={'#f4f4f5'}
             value={searchQuery}
             onChangeText={setSearchQuery}
          />
@@ -58,22 +68,20 @@ export function CharactersListScreen() {
 }
 
 const styles = StyleSheet.create({
-   loader: {
-      flex: 1,
-   },
    container: {
       flex: 1,
       paddingHorizontal: 12,
       paddingTop: 12,
-      backgroundColor: '#f4f4f5',
+      backgroundColor: '#222',
    },
    searchBar: {
       height: 40,
-      borderColor: '#ccc',
+      borderColor: '#555',
       borderWidth: 1,
       borderRadius: 8,
       paddingHorizontal: 10,
       marginBottom: 10,
-      backgroundColor: '#fff',
+      backgroundColor: '#333',
+      color: '#f4f4f5',
    },
 })

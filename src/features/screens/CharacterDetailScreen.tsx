@@ -19,7 +19,16 @@ export function CharacterDetailScreen() {
   const { id } = route.params
   const { data, isLoading } = useCharacterByIdQuery(id)
 
-  if (isLoading) return <ActivityIndicator size='large' style={{ flex: 1 }} />
+  if (isLoading) return (
+    <ActivityIndicator
+      size='large'
+      color='#f59e0b'
+      style={{
+        flex: 1,
+        backgroundColor: '#222'
+      }}
+    />
+  )
 
   if (!data) return <Text>Personagem não encontrado.</Text>
 
@@ -64,17 +73,19 @@ export function CharacterDetailScreen() {
       </View>
 
       <Text style={styles.sectionTitle}>Jutsus:</Text>
-      <View style={styles.jutsuBox}>
-        {data.jutsus.length > 0 ? (
-          data.jutsus.map((jutsu) => (
+      {data.jutsus.length > 0 ? (
+        data.jutsus.map((jutsu) => (
+          <View style={styles.jutsuBox}>
             <Text key={jutsu.id} style={styles.listItem}>
               • {jutsu.name}
             </Text>
-          ))
-        ) : (
-          <Text style={styles.info}>Nenhum jutsu cadastrado.</Text>
-        )}
-      </View>
+          </View>
+        ))
+      ) : (
+        <View style={styles.emptyJutsuBox}>
+          <Text style={styles.emptyJutsu}>Nenhum jutsu cadastrado.</Text>
+        </View>
+      )}
 
       <Text style={styles.sectionTitle}>Galeria:</Text>
       <View style={styles.galleryContainer}>
@@ -107,12 +118,12 @@ export function CharacterDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4f4f5',
+    backgroundColor: '#222',
   },
   imageContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#222',
     elevation: 3,
-    shadowColor: '#000',
+    shadowColor: '#f59e0b',
     shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: { width: 0, height: 2 },
@@ -121,8 +132,6 @@ const styles = StyleSheet.create({
   profileImage: {
     width: '100%',
     height: 350,
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
   },
   name: {
     fontSize: 28,
@@ -130,23 +139,23 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     textAlign: 'center',
     paddingHorizontal: 16,
-    color: '#222',
+    color: '#f4f4f5',
   },
   summary: {
     fontSize: 16,
     lineHeight: 24,
     paddingHorizontal: 16,
-    color: '#444',
+    color: '#f4f4f5',
     marginBottom: 16,
     textAlign: 'justify',
   },
   infoBox: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#333',
     marginHorizontal: 16,
     borderRadius: 12,
     padding: 16,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: '#f59e0b',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
@@ -159,11 +168,11 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#555',
+    color: '#f4f4f5',
   },
   info: {
     fontSize: 16,
-    color: '#333',
+    color: '#f4f4f5',
     textAlign: 'center',
   },
   sectionTitle: {
@@ -172,10 +181,10 @@ const styles = StyleSheet.create({
     marginTop: 28,
     marginBottom: 10,
     paddingHorizontal: 16,
-    color: '#333',
+    color: '#f4f4f5',
   },
   jutsuBox: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#333',
     marginHorizontal: 16,
     borderRadius: 10,
     paddingVertical: 8,
@@ -188,6 +197,19 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     color: '#444',
   },
+  emptyJutsuBox: {
+    paddingHorizontal: 16,
+  },
+  emptyJutsu: {
+    textAlign: 'center',
+    padding: 12,
+    marginTop: 10,
+    color: '#ffcccc',
+    backgroundColor: '#ff323233',
+    borderRadius: 8,
+    borderColor: '#ff3232',
+    borderWidth: 1,
+  },
   galleryContainer: {
     marginBottom: 30,
     paddingHorizontal: 16,
@@ -199,6 +221,6 @@ const styles = StyleSheet.create({
     width: 170,
     height: 300,
     borderRadius: 10,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#333',
   },
 })

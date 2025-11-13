@@ -16,7 +16,7 @@ interface Props {
 
 export function CharacterCard({ character, onPress }: Props) {
    return (
-      <TouchableOpacity style={styles.card} onPress={onPress}>
+      <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.8}>
          <Image
             source={{ uri: character.profile_image }}
             style={styles.image}
@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
    card: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#fff',
+      backgroundColor: '#333',
       marginVertical: 6,
       marginHorizontal: 4,
       borderRadius: 12,
       overflow: 'hidden',
       elevation: 3,
-      shadowColor: '#000',
+      shadowColor: '#f59e0b',
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.22,
       shadowRadius: 2.22,
@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
    name: {
       fontSize: 16,
       fontWeight: 'bold',
-      color: '#333'
+      color: '#f4f4f5'
    },
    village: {
-      color: '#555'
+      color: '#999'
    },
 })
