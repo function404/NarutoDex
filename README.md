@@ -48,23 +48,18 @@ Um agradecimento especial aos mantenedores desta API por fornecerem os dados.
 
 1.  **Clone o repositório:**
    ```bash
-      git clone [URL_DO_SEU_REPOSITORIO]
-      cd NarutoDex-main
+   git clone git@github.com:function404/narutodex_.git
+   cd narutodex_
    ```
 
 2.  **Instale as dependências:**
    ```bash
-      npm install
+   npm install
    ```
 
-3.  **Inicie o servidor Expo:**
+3.  **Inicie o servidor Expo com o emulador ja aberto:**
    ```bash
-      npm start
-      # ou
-      yarn start
+   npx expo run:android 
    ```
-
-4.  **Execute no seu dispositivo:**
-* Escaneie o QR Code exibido no terminal.
 
 ---
