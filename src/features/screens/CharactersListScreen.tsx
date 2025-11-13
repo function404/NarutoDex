@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
    },
    container: {
       flex: 1,
-      padding: 12,
+      paddingHorizontal: 12,
+      paddingTop: 12,
+      backgroundColor: '#f4f4f5',
    },
    searchBar: {
       height: 40,

@@ -36,12 +36,29 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: '#fff',
       marginVertical: 6,
+      marginHorizontal: 4,
       borderRadius: 12,
       overflow: 'hidden',
-      elevation: 2,
+      elevation: 3,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.22,
+      shadowRadius: 2.22,
    },
-   image: { width: 80, height: 80 },
-   info: { padding: 10 },
-   name: { fontSize: 16, fontWeight: 'bold' },
-   village: { color: '#555' },
+   image: {
+      width: 80,
+      height: 80
+   },
+   info: {
+      padding: 10,
+      flex: 1
+   },
+   name: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#333'
+   },
+   village: {
+      color: '#555'
+   },
 })

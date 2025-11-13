@@ -21,6 +21,7 @@ export function AppNavigator() {
             headerStyle: { backgroundColor: '#f59e0b' },
             headerTintColor: '#fff',
             headerTitleStyle: { fontWeight: 'bold' },
+            contentStyle: { backgroundColor: '#f4f4f5' },
          }}
       >
          <Stack.Screen
