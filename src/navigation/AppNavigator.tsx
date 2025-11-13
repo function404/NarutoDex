@@ -1,15 +1,13 @@
-import React from "react"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { CharactersListScreen } from "@/features/screens/CharactersListScreen"
-import { CharacterDetailScreen } from "@/features/screens/CharacterDetailScreen"
-import { VillagesListScreen } from "@/features/screens/VillagesListScreen"
-import { VillageDetailScreen } from "@/features/screens/VillageDetailScreen"
+import { MainTabNavigator } from './MainTabNavigator'
+import { CharacterDetailScreen } from '@/features/screens/CharacterDetailScreen'
+import { VillageDetailScreen } from '@/features/screens/VillageDetailScreen'
 
 export type RootStackParamList = {
-   CharactersList: undefined
+   MainTabs: undefined
    CharacterDetail: { id: number }
-   VillagesList: undefined
    VillageDetail: { id: number }
 }
 
@@ -18,32 +16,27 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 export function AppNavigator() {
    return (
       <Stack.Navigator
-         initialRouteName="CharactersList"
+         initialRouteName='MainTabs'
          screenOptions={{
-            headerStyle: { backgroundColor: "#f59e0b" },
-            headerTintColor: "#fff",
-            headerTitleStyle: { fontWeight: "bold" },
+            headerStyle: { backgroundColor: '#f59e0b' },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold' },
          }}
       >
          <Stack.Screen
-            name="CharactersList"
-            component={CharactersListScreen}
-            options={{ title: "Personagens" }}
+            name='MainTabs'
+            component={MainTabNavigator}
+            options={{ title: 'NarutoDex' }}
          />
          <Stack.Screen
-            name="CharacterDetail"
+            name='CharacterDetail'
             component={CharacterDetailScreen}
-            options={{ title: "Detalhes do Personagem" }}
+            options={{ title: 'Detalhes do Personagem' }}
          />
          <Stack.Screen
-            name="VillagesList"
-            component={VillagesListScreen}
-            options={{ title: "Vilas" }}
-         />
-         <Stack.Screen
-            name="VillageDetail"
+            name='VillageDetail'
             component={VillageDetailScreen}
-            options={{ title: "Detalhes da Vila" }}
+            options={{ title: 'Detalhes da Vila' }}
          />
       </Stack.Navigator>
    )

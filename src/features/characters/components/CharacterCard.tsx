@@ -24,7 +24,7 @@ export function CharacterCard({ character, onPress }: Props) {
          />
          <View style={styles.info}>
             <Text style={styles.name}>{character.name}</Text>
-            <Text style={styles.village}>{character.village}</Text>
+            <Text style={styles.village}>{character.village.toString()}</Text>
          </View>
       </TouchableOpacity>
    )

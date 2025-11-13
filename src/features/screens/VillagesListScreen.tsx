@@ -1,5 +1,11 @@
-import React from 'react'
-import { View, FlatList, ActivityIndicator } from 'react-native'
+import React, { useState, useMemo } from 'react'
+import {
+   View,
+   FlatList,
+   ActivityIndicator,
+   TextInput,
+   StyleSheet,
+} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useVillagesQuery } from '../queries/useVillagesQuery'
 import { VillageCard } from '@/features/characters/components/VillageCard'
@@ -11,22 +17,60 @@ export function VillagesListScreen() {
       useNavigation<NativeStackNavigationProp<RootStackParamList>>()
    const { data, isLoading } = useVillagesQuery()
 
-   if (isLoading) return <ActivityIndicator size='large' style={{ flex: 1 }} />
+   const [searchQuery, setSearchQuery] = useState('')
+
+   const filteredData = useMemo(() => {
+      if (!data) return []
+      if (!searchQuery) return data
+
+      return data.filter((village) =>
+         village.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+   }, [data, searchQuery])
+
+   if (isLoading) return <ActivityIndicator size='large' style={styles.loader} />
 
    return (
-      <View style={{ flex: 1, padding: 12 }}>
+      <View style={styles.container}>
+         <TextInput
+            style={styles.searchBar}
+            placeholder='Buscar vila...'
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+         />
+         
          <FlatList
-            data={data}
+            data={filteredData}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
                <VillageCard
                   village={item}
                   onPress={() =>
-                  navigation.navigate('VillageDetail', { id: item.id })
+                     navigation.navigate('VillageDetail', { id: item.id })
                   }
                />
             )}
+            contentContainerStyle={{ paddingBottom: 20 }}
          />
       </View>
    )
 }
+
+const styles = StyleSheet.create({
+   loader: {
+      flex: 1,
+   },
+   container: {
+      flex: 1,
+      padding: 12,
+   },
+   searchBar: {
+      height: 40,
+      borderColor: '#ccc',
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 10,
+      marginBottom: 10,
+      backgroundColor: '#fff',
+   },
+})
