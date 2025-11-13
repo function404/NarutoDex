@@ -7,10 +7,10 @@ import {
    StyleSheet
 } from 'react-native'
 
-import { Character } from '@/types/character'
+import { ICharacter } from '@/types/character'
 
 interface Props {
-   character: Character
+   character: ICharacter
    onPress: () => void
 }
 

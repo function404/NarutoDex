@@ -1,8 +1,8 @@
-import { Character } from '@/types/character'
+import { ICharacter } from '@/types/character'
 
 export interface Village {
    id: number
    name: string
    symbol: string
-   characters: Pick<Character, 'id' | 'name'>[]
+   characters: Pick<ICharacter, 'id' | 'name'>[]
 }

@@ -1,10 +1,11 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { Character } from "@/types/character"
+import { ICharacter } from "@/types/character"
 
+// next steps add to favorites
 interface FavoritesStore {
-   favorites: Character[]
-   toggleFavorite: (character: Character) => void
+   favorites: ICharacter[]
+   toggleFavorite: (character: ICharacter) => void
    isFavorite: (id: number) => boolean
 }
 

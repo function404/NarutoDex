@@ -28,7 +28,16 @@ export function VillagesListScreen() {
       )
    }, [data, searchQuery])
 
-   if (isLoading) return <ActivityIndicator size='large' style={styles.loader} />
+   if (isLoading) return (
+      <ActivityIndicator
+         size='large'
+         color='#f59e0b'
+         style={{
+            flex: 1,
+            backgroundColor: '#222'
+         }}
+      />
+   )
 
    return (
       <View style={styles.container}>
@@ -58,9 +67,6 @@ export function VillagesListScreen() {
 }
 
 const styles = StyleSheet.create({
-   loader: {
-      flex: 1,
-   },
    container: {
       flex: 1,
       padding: 12,

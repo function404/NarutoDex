@@ -17,7 +17,7 @@ interface IImageGalleryItem {
    image_url: string
 }
 
-export interface Character {
+export interface ICharacter {
    id: number
    name: string
    father: IParent | null
