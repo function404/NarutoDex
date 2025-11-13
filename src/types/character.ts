@@ -7,16 +7,21 @@ interface IJutsu {
    character_id: number
 }
 
+interface IParent {
+   id: number
+   name: string
+}
+
 interface IImageGalleryItem {
    id: number
-   url: string
+   image_url: string
 }
 
 export interface Character {
    id: number
    name: string
-   father: string
-   mother: string
+   father: IParent | null
+   mother: IParent | null
    village: {
       id: number
       name: string

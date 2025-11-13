@@ -19,6 +19,11 @@ export function CharacterDetailScreen() {
    const { id } = route.params
    const { data, isLoading } = useCharacterByIdQuery(id)
 
+   if (data) {
+      console.log('--- DADOS DO PERSONAGEM (CharacterDetailScreen) ---')
+      console.log(JSON.stringify(data, null, 2))
+   }
+
    if (isLoading) return <ActivityIndicator size='large' style={{ flex: 1 }} />
 
    if (!data) return <Text>Personagem não encontrado.</Text>
@@ -49,19 +54,21 @@ export function CharacterDetailScreen() {
          </View>
          <View style={styles.infoSection}>
             <Text style={styles.label}>Pai:</Text>
-            <Text style={styles.info}>{data.father || 'Desconhecido'}</Text>
+            <Text style={styles.info}>{data.father?.name || 'Desconhecido'}</Text>
          </View>
          <View style={styles.infoSection}>
             <Text style={styles.label}>Mãe:</Text>
-            <Text style={styles.info}>{data.mother || 'Desconhecida'}</Text>
+            <Text style={styles.info}>{data.mother?.name || 'Desconhecida'}</Text>
          </View>
 
          {/* 4. Jutsus */}
          <Text style={styles.sectionTitle}>Jutsus:</Text>
-         {data.jutsus.map((jutsu) => (
-            // Mantemos a correção de 'jutsu.id' e 'jutsu.name'
-            <Text key={jutsu.id} style={styles.listItem}>• {jutsu.name}</Text>
-         ))}
+         {data.jutsus.map((jutsu) => {
+            console.log('ITEM JUTSU:', jutsu)
+            return (
+               <Text key={jutsu.id} style={styles.listItem}>• {jutsu.name}</Text>
+            )
+         })}
 
          {/* 5. Galeria de Imagens */}
          <Text style={styles.sectionTitle}>Galeria:</Text>
@@ -70,7 +77,11 @@ export function CharacterDetailScreen() {
             data={data.images}
             keyExtractor={(item: any) => item.id.toString()}
             renderItem={({ item }) => (
-               <Image source={{ uri: item.url }} style={styles.galleryImage} />
+               <Image 
+                  source={{ uri: item.image_url }}
+                  style={styles.galleryImage}
+                  // resizeMode='cover'
+               />
             )}
             showsHorizontalScrollIndicator={false}
          />
@@ -82,6 +93,7 @@ const styles = StyleSheet.create({
    container: {
       flex: 1,
       padding: 16,
+      marginBottom: 64,
    },
    profileImage: {
       width: '100%',
@@ -121,10 +133,8 @@ const styles = StyleSheet.create({
       marginVertical: 2,
    },
    galleryImage: {
-      width: 150,
-      height: 150,
-      borderRadius: 8,
+      width: 200,
+      height: 300,
       marginRight: 10,
-      backgroundColor: '#eee'
    },
 })
